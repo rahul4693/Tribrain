@@ -13,12 +13,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepo;
 
-    @PostMapping("/signup")
-    public String signup(@RequestBody User user) {
-        userRepo.save(user);
-        return "Signup successful";
-    }
-
     @PostMapping("/login")
     public String login(@RequestBody User login) {
         User user = userRepo.findByEmail(login.getEmail());
@@ -27,4 +21,12 @@ public class UserController {
         }
         return "Invalid credentials";
     }
+
+    @PostMapping("/signup")
+    public String signup(@RequestBody User user) {
+        userRepo.save(user);
+        return "Signup successful";
+    }
+
+    
 }
